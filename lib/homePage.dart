@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tarea1/provider/sumaprovider.dart';
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key}) : super(key: key);
 
@@ -12,7 +13,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 final _text1= TextEditingController();
 final _text2= TextEditingController();
-  int _suma = 0;
+int? _suma = 0;
+final sumaProvider sumaProv= new sumaProvider();
 
 
 
@@ -22,7 +24,7 @@ final _text2= TextEditingController();
 
 }
   
-
+  
   @override
   Widget build(BuildContext context) {
     
@@ -78,10 +80,14 @@ final _text2= TextEditingController();
             
             //FlatButton(onPressed: (){}, child: Text('Sumar')),
             IconButton(
-            onPressed:(){sumar(int.parse(_text1.text),int.parse(_text2.text));
+            onPressed:(){
+                      //sumar(int.parse(_text1.text),int.parse(_text2.text));
+                      //sumaProv.getDataUser();
+                      //sumaProv.suma2numeros( int.parse(_text1.text),int.parse(_text2.text));
+                      sumaProv.suma2numeros(_text1.text,_text2.text);
                       setState(() {
                 
-                        _suma;
+                        _suma = sumaProv.getSumatotal();
                       });  
                       //_suma=0;   
                       _text1.clear();
