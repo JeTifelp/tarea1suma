@@ -5,14 +5,20 @@ import 'package:http/http.dart' as http;
 class sumaProvider{
   String?  valor1;
   String? valor2;
-  int? sumatotal;
+   int? sumatotal;
+    int suma=0;
+
 
  sumaProvider(){
    this.valor1='0';
    this.valor2='0';
    sumatotal=0;
+   
  } 
-  suma2numeros( String v1,  String v2) async{
+
+
+suma2numeros( String v1,  String v2) async{
+     
   final url2="http://192.168.0.14:3000/api/users/";
   var response= await http.post(Uri.parse(url2),body: {
           "valor1": v1,
@@ -26,14 +32,16 @@ class sumaProvider{
       
     if(response.statusCode== 200){
       print(' _______valor1 y valor2 enviados exitosamente______');
-      sumatotal= int.parse(data['sum']);
-
-      print('la suma total es: $sumatotal');
-    }
-    
-  
+      
+    }   
+ suma = int.parse(data['sum']);
+      //su=suma;
+      //print('la su total es: $su');
+      print('la suma total es: $suma');
  }
- int? getSumatotal(){
+
+
+ int? getSumatotal(){  
 
    return sumatotal;
 
@@ -42,7 +50,7 @@ class sumaProvider{
 
 
 
- getDataUser()async{//192.168.0.18192.168.0.18
+ getDataUser() async {//192.168.0.18192.168.0.18
   http.Response respuesta =  await http.get(Uri.parse('http://192.168.0.14:3000/api/users/'));
   String json=  respuesta.body;
   print('________ json ___');

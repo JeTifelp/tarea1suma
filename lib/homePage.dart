@@ -70,6 +70,31 @@ final sumaProvider sumaProv= new sumaProvider();
                 labelText: 'numero2'
               ),
             ),
+            
+            //FlatButton(onPressed: (){}, child: Text('Sumar')),
+            IconButton(
+            onPressed:(){
+                      //sumar(int.parse(_text1.text),int.parse(_text2.text));
+                      //sumaProv.getDataUser();
+                      //sumaProv.suma2numeros( int.parse(_text1.text),int.parse(_text2.text));
+                      //_suma=0;
+                      
+                      sumaProv.suma2numeros(_text1.text,_text2.text);
+                      
+                      setState(() {                       
+                        
+                        _suma =sumaProv.suma;                   
+                       
+                        
+                      });  
+                      //_suma=0;   
+                      _text1.clear();
+                      _text2.clear();  
+                      //_suma=0;      
+            } , 
+            icon: Icon(Icons.add_box)
+            ),
+
             SizedBox(
                         height: 20,
                       ),
@@ -78,24 +103,6 @@ final sumaProvider sumaProv= new sumaProvider();
               style: Theme.of(context).textTheme.headline4,
             ),
             
-            //FlatButton(onPressed: (){}, child: Text('Sumar')),
-            IconButton(
-            onPressed:(){
-                      //sumar(int.parse(_text1.text),int.parse(_text2.text));
-                      //sumaProv.getDataUser();
-                      //sumaProv.suma2numeros( int.parse(_text1.text),int.parse(_text2.text));
-                      sumaProv.suma2numeros(_text1.text,_text2.text);
-                      setState(() {
-                
-                        _suma = sumaProv.getSumatotal();
-                      });  
-                      //_suma=0;   
-                      _text1.clear();
-                      _text2.clear();  
-                      //_suma=0;      
-            } , 
-            icon: Icon(Icons.add_box)
-            )
           ],
 
         
